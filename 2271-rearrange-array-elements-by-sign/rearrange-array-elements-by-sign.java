@@ -14,7 +14,6 @@ class Solution {
             }
             k++;
         }
-        System.out.println(Arrays.toString(temp));
         i = 0;
         j = nums.length / 2;
         k = 0;
