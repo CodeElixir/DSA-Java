@@ -2,7 +2,6 @@ class Solution {
     public int[] rearrangeArray(int[] nums) {
         int[] res = new int[nums.length];
         int[] temp = new int[nums.length];
-        // Arrays.sort(nums);
         int i = 0;
         int j = nums.length / 2;
         int k = 0;
