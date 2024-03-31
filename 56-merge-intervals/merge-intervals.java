@@ -5,19 +5,15 @@ class Solution {
         for (int i = 0; i < intervals.length; i++) {
             int start = intervals[i][0];
             int end = intervals[i][1];
-            List<Integer> interval = new ArrayList<>();
-            interval.add(start);
-            interval.add(end);
-            if (i == 0) {
+            if (res.isEmpty() || start > res.get(res.size() - 1).get(1)) {
+                List<Integer> interval = new ArrayList<>();
+                interval.add(start);
+                interval.add(end);
                 res.add(interval);
             } else {
                 List<Integer> prevInt = res.get(res.size() - 1);
-                if (start <= prevInt.get(1)) {
-                    prevInt.set(0, Math.min(start, prevInt.get(0)));
-                    prevInt.set(1, Math.max(end, prevInt.get(1)));
-                } else {
-                    res.add(interval);
-                }
+                prevInt.set(0, Math.min(start, prevInt.get(0)));
+                prevInt.set(1, Math.max(end, prevInt.get(1)));
             }
         }
         return res.stream().map(a -> a.stream().mapToInt(Integer::intValue).toArray()).toArray(int[][]::new);
