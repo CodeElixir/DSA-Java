@@ -3,7 +3,7 @@ class Solution {
         int minCapacity = Integer.MIN_VALUE;
         int maxCapacity = 0;
         int capacity = 0;
-        int actualCapacity = Integer.MAX_VALUE;
+        // int actualCapacity = Integer.MAX_VALUE;
         for (int i = 0; i < weights.length; i++) {
             maxCapacity += weights[i];
             minCapacity = Math.max(minCapacity, weights[i]);
@@ -13,22 +13,22 @@ class Solution {
             int daysForCap = getDaysWithCapacity(weights, capacity);
             if (daysForCap <= days) {
                 maxCapacity = capacity - 1;
-                actualCapacity = Math.min(actualCapacity, capacity);
+                // actualCapacity = Math.min(actualCapacity, capacity);
             } else {
                 minCapacity = capacity + 1;
             }
         }
-        return actualCapacity;
+        return minCapacity;
     }
 
     private int getDaysWithCapacity(int[] weights, int capacity) {
         int days = 1;
-        int sum = 0;
+        int load = 0;
         for (int i = 0; i < weights.length; i++) {
-            sum += weights[i];
-            if (sum > capacity) {
+            load += weights[i];
+            if (load > capacity) {
                 days = days + 1;
-                sum = weights[i];
+                load = weights[i];
             }
         }
         return days;
