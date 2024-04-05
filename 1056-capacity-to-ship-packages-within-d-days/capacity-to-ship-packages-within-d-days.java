@@ -1,34 +1,55 @@
 class Solution {
-    public int shipWithinDays(int[] weights, int days) {
-        int minCapacity = Integer.MIN_VALUE;
-        int maxCapacity = 0;
-        int capacity = 0;
-        for (int i = 0; i < weights.length; i++) {
-            maxCapacity += weights[i];
-            minCapacity = Math.max(minCapacity, weights[i]);
-        }
-        while (minCapacity <= maxCapacity) {
-            capacity = (minCapacity + maxCapacity) / 2;
-            int daysForCap = getDaysWithCapacity(weights, capacity);
-            if (daysForCap <= days) {
-                maxCapacity = capacity - 1;
-            } else {
-                minCapacity = capacity + 1;
-            }
-        }
-        return minCapacity;
-    }
+    // public int shipWithinDays(int[] weights, int days) {
+    //     int minCapacity = Integer.MIN_VALUE;
+    //     int maxCapacity = 0;
+    //     int capacity = 0;
+    //     for (int i = 0; i < weights.length; i++) {
+    //         maxCapacity += weights[i];
+    //         minCapacity = Math.max(minCapacity, weights[i]);
+    //     }
+    //     while (minCapacity <= maxCapacity) {
+    //         capacity = (minCapacity + maxCapacity) / 2;
+    //         int daysForCap = getDaysWithCapacity(weights, capacity);
+    //         if (daysForCap <= days) {
+    //             maxCapacity = capacity - 1;
+    //         } else {
+    //             minCapacity = capacity + 1;
+    //         }
+    //     }
+    //     return minCapacity;
+    // }
 
-    private int getDaysWithCapacity(int[] weights, int capacity) {
-        int days = 1;
-        int load = 0;
-        for (int i = 0; i < weights.length; i++) {
-            load += weights[i];
-            if (load > capacity) {
-                days = days + 1;
-                load = weights[i];
-            }
+    // private int getDaysWithCapacity(int[] weights, int capacity) {
+    //     int days = 1;
+    //     int load = 0;
+    //     for (int i = 0; i < weights.length; i++) {
+    //         load += weights[i];
+    //         if (load > capacity) {
+    //             days = days + 1;
+    //             load = weights[i];
+    //         }
+    //     }
+    //     return days;
+    // }
+
+        public int shipWithinDays(int[] weights, int D) {
+        int left = 0, right = 0;
+        for (int w: weights) {
+            left = Math.max(left, w);
+            right += w;
         }
-        return days;
+        while (left < right) {
+            int mid = (left + right) / 2, need = 1, cur = 0;
+            for (int w: weights) {
+                if (cur + w > mid) {
+                    need += 1;
+                    cur = 0;
+                }
+                cur += w;
+            }
+            if (need > D) left = mid + 1;
+            else right = mid;
+        }
+        return left;
     }
 }
