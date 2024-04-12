@@ -15,23 +15,13 @@ class Solution {
         }
         ListNode slow = head;
         ListNode fast = head;
-        while (fast.next.next != null && fast.next.next.next != null) {
+        // Move fast one ahead so that slow moves to the node one ahead to actual node. 
+        fast = fast.next.next;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         slow.next = slow.next.next;
         return head;
-        // if (head.next == null) {
-        //     return null;
-        // }
-        // ListNode slow = head;
-        // ListNode fast = head;
-        // fast = fast.next.next;
-        // while (fast != null && fast.next != null) {
-        //     slow = slow.next;
-        //     fast = fast.next.next;
-        // }
-        // slow.next = slow.next.next;
-        // return head;
     }
 }
