@@ -22,7 +22,7 @@ class Solution {
             second = second.next;
             first = first.next;
         }
-        if (second == null && first == head) {
+        if (second == null) {
             return head.next;
         } else {
             first.next = first.next.next;
