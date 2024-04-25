@@ -33,7 +33,7 @@ class Solution {
         while (candidates[newPos] == candidates[pos]) {
             newPos++;
             if (newPos >= candidates.length) {
-                return;
+                break;
             }          
         }
 
