@@ -16,13 +16,15 @@ class Solution {
         }
 
         for (int i = pos; i < nums.length; i++) {
-            int temp = nums[i];
-            nums[i] = nums[pos];
-            nums[pos] = temp;
+            swap(pos, i, nums);
             permuteHelper(pos + 1, nums, permutations);
-            temp = nums[i];
-            nums[i] = nums[pos];
-            nums[pos] = temp;
+            swap(pos, i, nums);
         }
+    }
+
+    private void swap(int i, int j, int[] nums) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
     }
 }
