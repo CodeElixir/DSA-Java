@@ -1,6 +1,6 @@
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        Deque<Integer> stack = new ArrayDeque<>();
+        Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < asteroids.length; i++) {
             while (!stack.isEmpty() && stack.peek() > 0 && asteroids[i] < 0 && Math.abs(asteroids[i]) > stack.peek()) {
                 stack.pop();
