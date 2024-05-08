@@ -1,13 +1,9 @@
 class Solution {
     public long subArrayRanges(int[] nums) {
-        long maxSum = subArrayMaximum(nums);
-        long minSum = subArrayMinimum(nums);
-        return maxSum - minSum;
-    }
-
-    private long subArrayMinimum(int[] nums) {
         Deque<Integer> stack = new ArrayDeque<>();
         long minSum = 0;
+        long maxSum = 0;
+        
         for (int i = 0; i < nums.length; i++) {
             while (!stack.isEmpty() && nums[i] < nums[stack.peek()]) {
                 int j = stack.pop();
@@ -25,12 +21,7 @@ class Solution {
             minSum = (minSum + (long) nums[j] * left * right);          
         }
 
-        return minSum;
-    }
 
-    private long subArrayMaximum(int[] nums) {
-        Deque<Integer> stack = new ArrayDeque<>();
-        long maxSum = 0;
         for (int i = 0; i < nums.length; i++) {
             while (!stack.isEmpty() && nums[i] > nums[stack.peek()]) {
                 int j = stack.pop();
@@ -48,6 +39,8 @@ class Solution {
             maxSum = (maxSum + (long) nums[j] * left * right);            
         }
 
-        return maxSum;
+        return maxSum - minSum;
     }
+
+
 }
