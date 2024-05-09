@@ -7,7 +7,7 @@ class Solution {
         Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < num.length(); i++) {
             char ch = num.charAt(i);
-            while (!stack.isEmpty() && k > 0 && stack.peek() > ch) {
+            while (!stack.isEmpty() && k > 0 && (int)stack.peek() > (int)ch) {
                 stack.pop();
                 k--;
             }
@@ -21,7 +21,6 @@ class Solution {
         }
 
         StringBuilder builder = new StringBuilder(stack.size());
-        
         while(!stack.isEmpty()) {
             builder.append(stack.pop());
         }
