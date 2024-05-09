@@ -19,13 +19,11 @@ class Solution {
             stack.pop();
             k--;
         }
-        // char[] res = new char[stack.size()];
+        
         StringBuilder builder = new StringBuilder(stack.size());
-        // int i = stack.size() - 1;
         while(!stack.isEmpty()) {
             builder.insert(0, stack.pop());
         }
-        // System.out.println(builder.charAt(0) + "--" + builder);
               
         while(builder.length() > 0 && builder.charAt(0) == '0') {
             builder.deleteCharAt(0);
