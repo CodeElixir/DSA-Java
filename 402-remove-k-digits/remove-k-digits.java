@@ -20,8 +20,8 @@ class Solution {
             k--;
         }
 
-        StringBuilder builder = new StringBuilder();
-
+        StringBuilder builder = new StringBuilder(stack.size());
+        
         while(!stack.isEmpty()) {
             builder.append(stack.pop());
         }
