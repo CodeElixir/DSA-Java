@@ -19,11 +19,14 @@ class Solution {
             stack.pop();
             k--;
         }
-        
+
         StringBuilder builder = new StringBuilder(stack.size());
         while(!stack.isEmpty()) {
-            builder.insert(0, stack.pop());
+            // builder.insert(0, stack.pop());
+            builder.append(stack.pop());
         }
+
+        builder.reverse();
               
         while(builder.length() > 0 && builder.charAt(0) == '0') {
             builder.deleteCharAt(0);
