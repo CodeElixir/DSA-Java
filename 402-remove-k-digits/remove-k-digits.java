@@ -7,11 +7,14 @@ class Solution {
         Deque<Character> stack = new ArrayDeque<>();
         for (int i = 0; i < num.length(); i++) {
             char ch = num.charAt(i);
-            while (!stack.isEmpty() && k > 0 && (int)stack.peek() > (int)ch) {
+            while (!stack.isEmpty() && k > 0 && stack.peek() > ch) {
                 stack.pop();
                 k--;
             }
             stack.push(ch);
+            if (stack.size() == 1 && stack.peek() == '0') {
+                stack.pop();
+            }
         }
 
         
@@ -28,9 +31,9 @@ class Solution {
 
         builder.reverse();
               
-        while(builder.length() > 0 && builder.charAt(0) == '0') {
-            builder.deleteCharAt(0);
-        }
+        // while(builder.length() > 0 && builder.charAt(0) == '0') {
+        //     builder.deleteCharAt(0);
+        // }
 
         return builder.length() == 0 ? "0" : builder.toString();
     }
