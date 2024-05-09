@@ -12,9 +12,6 @@ class Solution {
                 k--;
             }
             stack.push(ch);
-            if (stack.size() == 1 && stack.peek() == '0') {
-                stack.pop();
-            }
         }
 
         
@@ -31,9 +28,9 @@ class Solution {
 
         builder.reverse();
               
-        // while(builder.length() > 0 && builder.charAt(0) == '0') {
-        //     builder.deleteCharAt(0);
-        // }
+        while(builder.length() > 0 && builder.charAt(0) == '0') {
+            builder.deleteCharAt(0);
+        }
 
         return builder.length() == 0 ? "0" : builder.toString();
     }
