@@ -22,7 +22,6 @@ class Solution {
 
         StringBuilder builder = new StringBuilder(stack.size());
         while(!stack.isEmpty()) {
-            // builder.insert(0, stack.pop());
             builder.append(stack.pop());
         }
 
