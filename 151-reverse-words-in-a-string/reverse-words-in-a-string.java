@@ -2,32 +2,34 @@ class Solution {
     public String reverseWords(String s) {
         StringBuilder builder = new StringBuilder();
         StringBuilder res = new StringBuilder();
-        char[] str = s.toCharArray();
+        char[] str = s.trim().toCharArray();
+        
         boolean flag = false;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if (i == s.length() - 1) {
-                while (str[i] == ' ') {
-                    i--;
-                }
-            }
+        for (int i = str.length - 1; i >= 0; i--) {
+            // if (i == s.length() - 1) {
+            //     while (str[i] == ' ') {
+            //         i--;
+            //     }
+            // }
             if (str[i] == ' ' && !flag && builder.length() > 0) {
                 flag = true;
                 res.append(builder.reverse());
                 res.append(str[i]);
+                // System.out.println(res);
                 builder.delete(0, builder.length());
             }
 
             if (str[i] != ' ') {
                 flag = false;
-                builder.append(s.charAt(i));
+                builder.append(str[i]);
             }
         }
 
         res.append(builder.reverse());
 
-        if (res.charAt(res.length() - 1) == ' ') {
-            res.deleteCharAt(res.length() - 1);
-        }
+        // if (res.charAt(res.length() - 1) == ' ') {
+        //     res.deleteCharAt(res.length() - 1);
+        // }
         return res.toString();
     }
 }
