@@ -14,8 +14,7 @@ class Solution {
                     builder.append(ch);
                 }
                 openCnt--;
-            }
-            
+            }   
         }
         return builder.toString();
     }
