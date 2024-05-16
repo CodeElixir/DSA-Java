@@ -11,8 +11,7 @@ class Solution {
 
         for (int i = ei + 1; i >= si - 1; i--) {
             if (str[i] == ' ' && builder.length() > 0) {
-                res.append(builder.reverse());
-                res.append(str[i]);
+                res.append(builder.reverse().append(str[i]));
                 builder.delete(0, builder.length());
                 while (str[--i] == ' ') {}
                 builder.append(str[i]);
