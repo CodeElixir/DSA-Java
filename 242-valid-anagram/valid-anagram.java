@@ -7,9 +7,11 @@ class Solution {
         }
 
         int[] freq1 = new int[CHAR];
+        char[] sArr = s.toCharArray();
+        char[] tArr = t.toCharArray();
         for (int i = 0; i < t.length(); i++) {
-            freq1[s.charAt(i)]++;
-            freq1[t.charAt(i)]--;
+            freq1[(int) sArr[i]]++;
+            freq1[(int) tArr[i]]--;
         }
 
         for (int i = 0; i < CHAR; i++) {
