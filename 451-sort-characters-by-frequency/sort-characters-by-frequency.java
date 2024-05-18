@@ -57,14 +57,14 @@ class Solution {
         // return res.toString();
 
         char str[]=s.toCharArray();
-        
+        StringBuilder res = new StringBuilder(s.length());
         int freq[]=new int[128];
         for(int i=0;i<str.length;i++)
         {
             freq[str[i]]++;
         }
         
-        for(int i=0;i<str.length;)
+        for(int i=0;i<str.length;i++)
         {
             char c=',';
             
@@ -78,11 +78,11 @@ class Solution {
             
             while(freq[c]!=0)
             {
-                str[i++]=c;
+                res.append(c);
                 freq[c]--;
             }
         }
-        return new String(str);
+        return res.toString();
     }
     
 }
