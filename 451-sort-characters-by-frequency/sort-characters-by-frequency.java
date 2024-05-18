@@ -3,36 +3,45 @@ class Solution {
 
     public String frequencySort(String s) {
         // Method - 1
-        // int[] freqArr = new int[CHAR];
-        // StringBuilder res = new StringBuilder(s.length());
-        // for (char ch : s.toCharArray()) {
-        //     freqArr[ch]++;
-        // }
+        int[] freqArr = new int[CHAR];
+        StringBuilder res = new StringBuilder(s.length());
+        for (char ch : s.toCharArray()) {
+            freqArr[ch]++;
+        }
         // List<List<Character>> buckets = Stream.generate(() -> new ArrayList<Character>())
         //                                 .limit(s.length() + 1)
         //                                 .collect(Collectors.toList());
 
-        // for (int i = 0; i < CHAR; i++) {
-        //     char ch = (char) i;
-        //     int freq = freqArr[i];
-        //     if (freq != 0) {
-        //         List<Character> chars = buckets.get(freq);
-        //         chars.add(ch);
-        //     }
-        // }
+        List<Character>[] buckets = new List[s.length() + 1];
 
-        // for (int i = buckets.size() - 1; i >= 0; i--) {
-        //     List<Character> chars = buckets.get(i);
-        //     for (int j = 0; j < chars.size(); j++) {
-        //         char ch = chars.get(j);
-        //         int cnt = i;
-        //         while(cnt != 0) {
-        //             res.append(ch);
-        //             cnt--;
-        //         }
-        //     }
-        // }
-        // return res.toString();
+        for (int i = 0; i < CHAR; i++) {
+            char ch = (char) i;
+            int freq = freqArr[i];
+            if (freq != 0) {
+                List<Character> chars = buckets[freq];
+                if (chars == null) {
+                    chars = new ArrayList<>();
+                }
+                chars.add(ch);
+                buckets[freq] = chars;
+            }
+        }
+
+        for (int i = buckets.length - 1; i >= 0; i--) {
+            List<Character> chars = buckets[i];
+            if (chars != null) {
+                for (int j = 0; j < chars.size(); j++) {
+                    char ch = chars.get(j);
+                    int cnt = i;
+                    while(cnt != 0) {
+                        res.append(ch);
+                        cnt--;
+                    }
+                }
+            }
+        }
+        return res.toString();
+    }
 
         // Method - 2
         // int[] freqArr = new int[CHAR];
@@ -56,33 +65,33 @@ class Solution {
         // }
         // return res.toString();
 
-        char str[]=s.toCharArray();
-        StringBuilder res = new StringBuilder(s.length());
-        int freq[]=new int[128];
-        for(int i=0;i<str.length;i++)
-        {
-            freq[str[i]]++;
-        }
+    //     char str[]=s.toCharArray();
+    //     StringBuilder res = new StringBuilder(s.length());
+    //     int freq[]=new int[128];
+    //     for(int i=0;i<str.length;i++)
+    //     {
+    //         freq[str[i]]++;
+    //     }
         
-        for(int i=0;i<str.length;i++)
-        {
-            char c=',';
+    //     for(int i=0;i<str.length;i++)
+    //     {
+    //         char c=',';
             
-            for(int j=0;j<freq.length;j++)
-            {
-                if(freq[j]>freq[c])
-                {
-                    c=(char)j;
-                }
-            }
+    //         for(int j=0;j<freq.length;j++)
+    //         {
+    //             if(freq[j]>freq[c])
+    //             {
+    //                 c=(char)j;
+    //             }
+    //         }
             
-            while(freq[c]!=0)
-            {
-                res.append(c);
-                freq[c]--;
-            }
-        }
-        return res.toString();
-    }
+    //         while(freq[c]!=0)
+    //         {
+    //             res.append(c);
+    //             freq[c]--;
+    //         }
+    //     }
+    //     return res.toString();
+    // }
     
 }
