@@ -2,7 +2,7 @@ class Solution {
     private static int CHAR = 128;
 
     public String frequencySort(String s) {
-        int[] freqArr = new int[256];
+        int[] freqArr = new int[CHAR];
         StringBuilder res = new StringBuilder(s.length());
         for (char ch : s.toCharArray()) {
             freqArr[ch]++;
