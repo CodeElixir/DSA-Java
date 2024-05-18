@@ -35,26 +35,54 @@ class Solution {
         // return res.toString();
 
         // Method - 2
-        int[] freqArr = new int[CHAR];
-        StringBuilder res = new StringBuilder(s.length());
-        for (char ch : s.toCharArray()) {
-            freqArr[ch]++;
-        }
+        // int[] freqArr = new int[CHAR];
+        // StringBuilder res = new StringBuilder(s.length());
+        // for (char ch : s.toCharArray()) {
+        //     freqArr[ch]++;
+        // }
 
-        for (int ch : s.toCharArray()) {
-            int maxIndex = 0;
-            for (int i = 0; i < CHAR; i++) {
-                if (freqArr[i] > freqArr[maxIndex]) {
-                    maxIndex = i;
+        // for (int ch : s.toCharArray()) {
+        //     int maxIndex = 0;
+        //     for (int i = 0; i < CHAR; i++) {
+        //         if (freqArr[i] > freqArr[maxIndex]) {
+        //             maxIndex = i;
+        //         }
+        //     }
+
+        //     while(freqArr[maxIndex] != 0) {
+        //         res.append((char) maxIndex);
+        //         freqArr[maxIndex]--;
+        //     }
+        // }
+        // return res.toString();
+
+        char str[]=s.toCharArray();
+        
+        int freq[]=new int[128];
+        for(int i=0;i<str.length;i++)
+        {
+            freq[str[i]]++;
+        }
+        
+        for(int i=0;i<str.length;)
+        {
+            char c=',';
+            
+            for(int j=0;j<freq.length;j++)
+            {
+                if(freq[j]>freq[c])
+                {
+                    c=(char)j;
                 }
             }
-
-            while(freqArr[maxIndex] != 0) {
-                res.append((char) maxIndex);
-                freqArr[maxIndex]--;
+            
+            while(freq[c]!=0)
+            {
+                str[i++]=c;
+                freq[c]--;
             }
         }
-        return res.toString();
+        return new String(str);
     }
     
 }
