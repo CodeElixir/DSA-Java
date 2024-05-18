@@ -1,5 +1,5 @@
 class Solution {
-    private static int CHAR = 256;
+    private static int CHAR = 128;
 
     public String frequencySort(String s) {
         int[] freqArr = new int[256];
