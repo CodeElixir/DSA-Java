@@ -1,6 +1,6 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        int[] freq = new int[256];
+        int[] freq = new int[128];
         int left = 0;
         int right = 0;
         int maxLen = 0;
@@ -28,12 +28,4 @@ class Solution {
         }
         return true;
     }
-
-    // private void print(int[] freq, char[] chars) {
-    //     for (int ch : chars) {
-    //         System.out.print(freq[ch] + ", ");
-    //     }
-    //     System.out.println();
-        
-    // }
 }
