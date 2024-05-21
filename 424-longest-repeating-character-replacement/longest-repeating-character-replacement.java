@@ -6,8 +6,8 @@ class Solution {
         int[] freq = new int[26];
         char[] chars = s.toCharArray();
         for (int i = 0; i < chars.length; i++) {
-            freq[chars[i] - 'A']++;
-            maxFreq = Math.max(maxFreq, freq[chars[i] - 'A']);
+            // freq[chars[i] - 'A']++;
+            maxFreq = Math.max(maxFreq, ++freq[chars[i] - 'A']);
             // i - left + 1 - maxFreq ==> len - maxCharFreq ==> minimum no of conversions
             if ((i - left + 1) - maxFreq > k) {
                 freq[chars[left] - 'A']--;
