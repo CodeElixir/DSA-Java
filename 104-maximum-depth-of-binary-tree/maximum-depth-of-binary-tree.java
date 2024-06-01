@@ -18,26 +18,26 @@ class Solution {
         if (root == null) {
             return 0;
         }
-        // return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+        return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 
         // Using level order traversal
-        int level = 0;
-        Deque<TreeNode> queue = new ArrayDeque<>();
-        queue.addLast(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
+        // int level = 0;
+        // Deque<TreeNode> queue = new ArrayDeque<>();
+        // queue.addLast(root);
+        // while (!queue.isEmpty()) {
+        //     int size = queue.size();
             
-            for (int i = 0; i < size; i++) {
-                TreeNode front = queue.removeFirst();
-                if (front.left != null) {
-                    queue.add(front.left);
-                }
-                if (front.right != null) {
-                    queue.add(front.right);
-                }
-            }
-            level++;
-        }
-        return level;
+        //     for (int i = 0; i < size; i++) {
+        //         TreeNode front = queue.removeFirst();
+        //         if (front.left != null) {
+        //             queue.add(front.left);
+        //         }
+        //         if (front.right != null) {
+        //             queue.add(front.right);
+        //         }
+        //     }
+        //     level++;
+        // }
+        // return level;
     }
 }
