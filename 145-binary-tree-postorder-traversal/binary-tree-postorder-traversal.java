@@ -21,11 +21,30 @@ class Solution {
     }
 
     private void postorderTraversal(List<Integer> postorder, TreeNode root) {
-        if (root == null) {
-            return;
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        TreeNode node = root;
+        while (true) {
+            if (node != null) {
+                stack1.push(node);
+                node = node.left;
+            } else {
+                if (stack1.isEmpty()) {
+                    break;
+                }
+                TreeNode node1 = stack1.peek();
+                if (node1.right == null) {
+                    postorder.add(node1.val);
+                    stack2.push(stack1.pop());
+                } else {
+                    if (stack2.isEmpty() || stack2.peek() != node1.right) {
+                        node = node1.right;
+                    } else {
+                        postorder.add(node1.val);
+                        stack2.push(stack1.pop());
+                    }
+                }
+            }
         }
-        postorderTraversal(postorder, root.left);
-        postorderTraversal(postorder, root.right);
-        postorder.add(root.val);
     }
 }
