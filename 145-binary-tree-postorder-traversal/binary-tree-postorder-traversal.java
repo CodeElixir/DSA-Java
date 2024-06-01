@@ -22,7 +22,8 @@ class Solution {
 
     private void postorderTraversal(List<Integer> postorder, TreeNode root) {
         Stack<TreeNode> stack1 = new Stack<>();
-        Stack<TreeNode> stack2 = new Stack<>();
+        TreeNode temp = null;
+        // Stack<TreeNode> stack2 = new Stack<>();
         TreeNode node = root;
         while (true) {
             if (node != null) {
@@ -35,13 +36,13 @@ class Solution {
                 TreeNode node1 = stack1.peek();
                 if (node1.right == null) {
                     postorder.add(node1.val);
-                    stack2.push(stack1.pop());
+                    temp = stack1.pop();
                 } else {
-                    if (stack2.isEmpty() || stack2.peek() != node1.right) {
+                    if (temp == null || temp != node1.right) {
                         node = node1.right;
                     } else {
                         postorder.add(node1.val);
-                        stack2.push(stack1.pop());
+                        temp = stack1.pop();
                     }
                 }
             }
