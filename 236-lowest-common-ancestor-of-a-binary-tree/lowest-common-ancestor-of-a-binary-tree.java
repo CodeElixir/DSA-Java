@@ -20,17 +20,15 @@ class Solution {
         }
 
         if (root == p || root == q) {
-            // lcaHelper(root.left, p, q);
-            // lcaHelper(root.right, p, q);
             return root;
         }
 
-        TreeNode l = lcaHelper(root.left, p, q);
-        TreeNode r = lcaHelper(root.right, p, q);
-        if (l != null && r != null) {
+        TreeNode left = lcaHelper(root.left, p, q);
+        TreeNode right = lcaHelper(root.right, p, q);
+        if (left != null && right != null) {
             return root;
         } else {
-            return l != null ? l : r; 
+            return left != null ? left : right; 
         }
     }
 }
