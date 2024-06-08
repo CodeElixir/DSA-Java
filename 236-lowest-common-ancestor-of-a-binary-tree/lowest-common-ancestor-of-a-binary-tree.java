@@ -30,20 +30,28 @@ class Solution {
     }
 
     private TreeNode lcaHelper(TreeNode root, TreeNode p, TreeNode q) {
-        // if (root == null) {
-        //     return null;
-        // }
+        if (root == null) {
+            return null;
+        }
 
-        if (root == null || root == p || root == q) {
+        if (root == p || root == q) {
             return root;
         }
 
         TreeNode left = lcaHelper(root.left, p, q);
         TreeNode right = lcaHelper(root.right, p, q);
+        // if (left != null && right != null) {
+        //     return root;
+        // } else {
+        //     return left != null ? left : right; 
+        // }
         if (left != null && right != null) {
             return root;
-        } else {
-            return left != null ? left : right; 
+        } else if(left != null) {
+            return left;
+        } else if(right != null) {
+            return right;
         }
+        return null;
     }
 }
