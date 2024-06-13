@@ -16,18 +16,45 @@
 class Solution {
     private TreeNode temp = null;
 
+    // Recursion
+    // public void flatten(TreeNode root) {
+    //     if (root == null) {
+    //         return;
+    //     }
+
+    //     flatten(root.right);
+    //     flatten(root.left);
+
+    //     root.right = temp;
+    //     root.left = null;
+
+    //     temp = root;
+
+    // }
+
+    // Using stack
     public void flatten(TreeNode root) {
         if (root == null) {
             return;
         }
 
-        flatten(root.right);
-        flatten(root.left);
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            
+            if (node.right != null) {
+                stack.push(node.right);
+            }
 
-        root.right = temp;
-        root.left = null;
+            if (node.left != null) {
+                stack.push(node.left);
+            }
 
-        temp = root;
-
+            if (!stack.isEmpty()) {
+                node.right = stack.peek();
+            }
+            node.left = null;
+        }
     }
 }
