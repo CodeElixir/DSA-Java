@@ -20,7 +20,7 @@ class Solution {
             return true;
         }
         TreeNode pre = null;
-        Stack<TreeNode> stack = new Stack<>();
+        Deque<TreeNode> stack = new LinkedList<>();
         while (root != null || !stack.isEmpty()) {
             while (root != null) {
                 stack.push(root);
