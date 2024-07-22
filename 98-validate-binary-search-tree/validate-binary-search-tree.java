@@ -15,9 +15,28 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        return isValidBST(root, new long[]{Long.MIN_VALUE});
+        // return isValidBST(root, new long[]{Long.MIN_VALUE});
+        if (root == null) {
+            return true;
+        }
+        TreeNode pre = null;
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (pre != null && root.val <= pre.val) {
+                return false;
+            }
+            pre = root;
+            root = root.right;
+        }
+        return true;
     }
     
+    // Recursive
     private boolean isValidBST(TreeNode root, long[] prevMax) {
         if (root == null) {
             return true;
